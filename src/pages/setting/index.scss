@@ -1,0 +1,8 @@
+.button-logout {
+  background-color: transparent;
+  padding: 12px;
+
+  &::after{
+    border: none;
+  }
+}

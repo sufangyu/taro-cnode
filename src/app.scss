@@ -1,14 +1,61 @@
+@import "~taro-ui/dist/style/index.scss";
+
 .page {
   background: #f5f5f5;
   min-height: 100vh;
   font-size: 28px;
+  overflow:hidden;
 }
 
+.page-white {
+  background: #fff;
+}
+
+.button-primary[type=primary] {
+  background-color: #5677fc !important;
+}
+.button-link {
+  color: #5677fc;
+}
 
 .flex {
   display: flex;
 
+  &-justify-center {
+    justify-content: center;
+  }
+  &-justify-between {
+    justify-content: space-between;
+  }
+
+  &-align-center {
+    align-items: center;
+  }
+
   &-1 {
     flex: 1;
+  }
+}
+
+.text-content {
+  padding: 30px;
+
+  .h3 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .p {
+    margin-bottom: 30px;
+  }
+}
+
+
+.form-item {
+  margin-bottom: 45px;
+
+  .label {
+    margin-bottom: 15px;
   }
 }

@@ -1,9 +1,10 @@
 import Taro, { Component } from '@tarojs/taro'
+import '@tarojs/async-await'
 import { Provider } from '@tarojs/mobx'
-import Index from './pages/index'
 
 import counterStore from './store/counter'
-
+import accountStore from './store/account'
+import Index from './pages/index'
 import './app.scss'
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -13,23 +14,11 @@ import './app.scss'
 // }
 
 const store = {
-  counterStore
+  counterStore,
+  accountStore,
 }
 
 class App extends Component {
-
-  config = {
-    pages: [
-      'pages/index/index',
-      'pages/mine/index'
-    ],
-    window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#5677fc',
-      navigationBarTitleText: 'CNode 社区',
-      navigationBarTextStyle: 'white'
-    }
-  }
 
   componentDidMount () {}
 
@@ -38,6 +27,42 @@ class App extends Component {
   componentDidHide () {}
 
   componentDidCatchError () {}
+
+  config = {
+    pages: [
+      'pages/home/index',
+      'pages/account/login/index',
+      'pages/mine/index',
+      'pages/setting/index',
+      'pages/about/index',
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#5677fc',
+      navigationBarTitleText: 'CNode 社区',
+      navigationBarTextStyle: 'white'
+    },
+    tabBar: {
+      color: '#808080',
+      selectedColor: '#5171f0',
+      borderStyle: 'black',
+      backgroundColor: '#ffffff',
+      list: [
+        {
+          text: '首页',
+          pagePath: 'pages/home/index',
+          iconPath: 'assets/images/tabbar/home.png',
+          selectedIconPath: 'assets/images/tabbar/home-selected.png',
+        },
+        {
+          text: '我的',
+          pagePath: 'pages/mine/index',
+          iconPath: 'assets/images/tabbar/mine.png',
+          selectedIconPath: 'assets/images/tabbar/mine-selected.png',
+        }
+      ],
+    }
+  }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数

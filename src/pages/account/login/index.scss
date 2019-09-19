@@ -1,0 +1,32 @@
+.login-placeholder {
+  position: relative;
+  background-color: #5677fc;
+  margin-bottom: 100px;
+  height: 200px;
+
+  Image {
+    display: block;
+    width: 140px;
+    height: 140px;
+    border-radius: 100%;
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.login-form {
+  padding: 30px;
+
+  Input {
+    height: 72px;
+    line-height: 72px;
+    border-bottom: 1px solid #ddd;
+    font-size: 24px;
+  }
+
+  Button {
+    margin-bottom: 20px;
+  }
+}
