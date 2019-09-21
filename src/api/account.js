@@ -1,6 +1,5 @@
 import http from '../utils/request';
 import { API_BASE } from '../config';
-import { func } from 'prop-types';
 
 
 /**

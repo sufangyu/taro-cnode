@@ -34,3 +34,40 @@ export function parseTime(date = new Date(), fmt = 'yyyy-MM-dd HH:mm:ss') {
 
   return fmt;
 }
+
+
+/**
+ * 格式化相对时间
+ *
+ * @export
+ * @param {*} time 目标时间
+ * @param {*} fmt 格式
+ * @returns
+ */
+export function fromNow(time, fmt) {
+  const d = new Date(time);
+  const now = Date.now();
+  const diff = (now - d) / 1000;
+  if (diff < 0) {
+    console.warn(`${time} more than the current time`);
+    return time;
+  }
+
+  if (diff < 30) {
+    return '刚刚';
+  }
+  if (diff < 3600) {
+    return `${Math.ceil(diff / 60)}分钟前`;
+  }
+  if (diff < 3600 * 24) {
+    return `${Math.floor(diff / 3600)}小时前`;
+  }
+  if (diff < 3600 * 24 * 2) {
+    return '1天前';
+  }
+  if (fmt) {
+    return parseTime(time, fmt);
+  }
+
+  return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日${d.getHours()}时${d.getMinutes()}分${d.getSeconds()}秒`;
+}

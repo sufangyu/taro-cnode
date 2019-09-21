@@ -58,11 +58,11 @@ function request(options) {
 
 
 const http = {
-  get({url = '', data = {}}) {
-    return request({url, data});
+  get({url = '', data = {}, loading = true, loadingText}) {
+    return request({url, data, loading, loadingText});
   },
-  post({url = '', data = {}}) {
-    return request({url, data, method: 'POST'});
+  post({url = '', data = {}, loading = true, loadingText}) {
+    return request({url, data, method: 'POST', loading, loadingText});
   },
 };
 
