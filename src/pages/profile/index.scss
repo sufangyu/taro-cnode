@@ -1,0 +1,38 @@
+.button-logout {
+  background-color: transparent;
+  padding: 12px;
+
+  &::after{
+    border: none;
+  }
+}
+
+.list-item {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 5px 30px;
+  min-height: 82px;
+
+  &-last {
+    border-bottom: none;
+  }
+
+  Image {
+    display: block;
+    width: 72px;
+    height: 72px;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+}
+.list-title {
+  flex: 1;
+}
+.list-extra {
+  font-size: 26px;
+
+  Text {
+    opacity: 0.6;
+  }
+}

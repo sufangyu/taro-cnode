@@ -28,7 +28,7 @@ const menusMainConfig = [
   {
     name: '个人资料',
     icon: iconUser,
-    path: './path/index?name=zhangSanFeng',
+    path: '/pages/profile/index',
   },
   {
     name: '意见反馈',

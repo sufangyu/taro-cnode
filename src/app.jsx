@@ -33,6 +33,7 @@ class App extends Component {
       'pages/home/index',
       'pages/account/login/index',
       'pages/mine/index',
+      'pages/profile/index',
       'pages/setting/index',
       'pages/about/index',
     ],

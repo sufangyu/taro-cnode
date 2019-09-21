@@ -15,7 +15,7 @@ function request(options) {
 
   return new Promise((resolve, reject) => {
     if (loading) {
-      const loadingOption = loadingText ? {title: loadingText} : null;
+      const loadingOption = loadingText ? {title: loadingText, mask: true} : {mask: true};
       Taro.showLoading(loadingOption);
     }
 

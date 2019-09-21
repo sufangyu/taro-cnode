@@ -1,12 +1,10 @@
 import Taro from '@tarojs/taro'
 import { observable } from 'mobx'
 
-const ACCOUNT_KEY = 'ACCOUNT'
-
-const accountStorage = Taro.getStorageSync(ACCOUNT_KEY);
+import { ACCOUNT_KEY } from '../constants/stote-key'
 
 const accountStore = observable({
-  account: accountStorage || null,
+  account: Taro.getStorageSync(ACCOUNT_KEY) || null,
 
   /**
    * 设置 账号信息

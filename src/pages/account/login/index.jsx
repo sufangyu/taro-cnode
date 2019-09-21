@@ -14,7 +14,8 @@ import { observer, inject } from '@tarojs/mobx'
 import './index.scss'
 import avatarDefault from '../../../assets/images/avatar-default.png'
 import { loginByAccesstoken } from '../../../api/account';
-import { getCurrentPage } from '../../../router/helper';
+import ROUTER_CONFIG from '../../../router/path';
+import { getCurrentPage, gotoPage } from '../../../router/helper';
 
 
 @inject('accountStore')
@@ -76,7 +77,6 @@ class Index extends Component {
       return;
     }
 
-
     try {
       const data = {
         accesstoken,
@@ -106,7 +106,10 @@ class Index extends Component {
         setTimeout(() => {
           const currentPage = getCurrentPage();
           console.log(currentPage);
-          Taro.navigateBack({ delta: 1 });
+          const { options: {from} } = currentPage;
+          const redirectUrl = from || ROUTER_CONFIG.home;
+          const action = 'replace';
+          gotoPage(redirectUrl, action);
         }, 1000);
       }
     } catch (error) {
