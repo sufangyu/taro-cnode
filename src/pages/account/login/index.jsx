@@ -15,7 +15,7 @@ import './index.scss'
 import avatarDefault from '../../../assets/images/avatar-default.png'
 import { loginByAccesstoken } from '../../../api/account';
 import ROUTER_CONFIG from '../../../router/path';
-import { getCurrentPage, gotoPage } from '../../../router/helper';
+import { gotoPage } from '../../../router/helper';
 
 
 @inject('accountStore')
@@ -30,16 +30,20 @@ class Index extends Component {
     super(props);
 
     this.state = {
+      params: {},
       isAutoLogin: true,
       accesstoken: '974395a4-8d5b-498e-ac14-b7ca8f143594',
     };
   }
 
-  componentWillMount () { }
-
-  componentWillReact () {
-    console.log('componentWillReact')
+  componentWillMount () {
+    const { params } = this.$router;
+    this.setState({
+      params,
+    });
   }
+
+  componentWillReact () { }
 
   componentDidMount () { }
 
@@ -64,7 +68,7 @@ class Index extends Component {
   }
 
   async handleSubmit() {
-    const { accesstoken, isAutoLogin } = this.state;
+    const { accesstoken, isAutoLogin, params } = this.state;
 
     console.log('accesstoken =>>', accesstoken);
 
@@ -104,10 +108,7 @@ class Index extends Component {
 
         // 重定向来源页面
         setTimeout(() => {
-          const currentPage = getCurrentPage();
-          console.log(currentPage);
-          const { options: {from} } = currentPage;
-          const redirectUrl = from || ROUTER_CONFIG.home;
+          const redirectUrl = params.from || ROUTER_CONFIG.home;
           const action = 'replace';
           gotoPage(redirectUrl, action);
         }, 1000);
