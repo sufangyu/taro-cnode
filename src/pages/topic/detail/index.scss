@@ -1,0 +1,119 @@
+.topic-detail {
+  background-color: #fff;
+  margin-bottom: 30px;
+
+  .topic-title {
+    font-size: 36px;
+    padding: 30px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .topic-meta {
+    padding: 30px;
+
+    .topic-author-avatar {
+      display: block;
+      width: 72px;
+      height: 72px;
+      margin-right: 20px;
+      overflow: hidden;
+      border-radius: 100%;
+      background-color: rgba(0, 0, 0, 0.15);
+
+      Image {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .topic-info {
+      margin-top: 10px;
+      font-size: 22px;
+      opacity: 0.5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      Text {
+        margin-left: 15px;
+      }
+    }
+
+  }
+
+  .topic-content {
+    padding: 0 30px;
+
+    Image {
+      text-align: center;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    View {
+      margin: 20px 0;
+    }
+  }
+}
+
+// 评论
+.topic-comments-wrapper {
+  background-color: #fff;
+  padding: 30px;
+
+  .model-title {
+    color: #999;
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+.tools {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px 30px;
+  background-color: #fff;
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+
+  .tools-action-comment {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 64px;
+    line-height: 64px;
+    border-radius: 64px;
+    font-size: 24px;
+    padding: 0 30px;
+    color: #999;
+  }
+
+  .tools-actions {
+    .icon-favorite,
+    .icon-share {
+      display: inline-block;
+      margin-left: 30px;
+      width: 32px;
+      height: 32px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .icon-favorite {
+      opacity: 0.5;
+      background-image: url(../../../assets/images/icon-comment-favorite.png);
+    }
+    .icon-favorited {
+      opacity: 1;
+      background-image: url(../../../assets/images/icon-comment-favorited.png);
+    }
+    .icon-share {
+      background-image: url(../../../assets/images/icon-share.png);
+    }
+  }
+
+
+}

@@ -3,7 +3,8 @@ import { View, Button, Text, ScrollView } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
 import TopicItem from '../../components/TopicTtem'
-
+import ROUTER_CONFIG from '../../router/path'
+import { gotoPage } from '../../router/helper'
 import { TOPIC_CONFIG } from '../../data'
 import { getTopics } from '../../api/topics'
 
@@ -104,22 +105,38 @@ class Index extends Component {
       return;
     }
 
-    const { list, status, pagination: {limit, page} } = this.state.topics[tab];
+    const currentTopic = this.state.topics[tab];
+    const { list } = currentTopic;
+    let { status, pagination } = currentTopic;
+
     if (status === 'LOADING') {
       return;
     }
 
+    currentTopic.status = 'LOADING';
+    this.setState({
+      topics: this.state.topics,
+    });
+
     try {
       const params = {
         tab,
-        limit,
-        page,
+        limit: pagination.limit,
+        page: pagination.page,
         mdrender: false,
       };
       const res = await getTopics(params);
       if (res.success) {
         const { data } = res;
-        list.push(...data);
+
+        if (data.length === 0) {
+          currentTopic.status = 'FINISHED';
+        } else {
+          currentTopic.status = 'NORMAL';
+          list.push(...data);
+          pagination.page += 1;
+        }
+
         this.setState({
           topics: this.state.topics,
         });
@@ -146,6 +163,12 @@ class Index extends Component {
     }
   }
 
+  /**
+   * 滚动事件
+   *
+   * @param {*} ev
+   * @memberof Index
+   */
   handleScroll(ev) {
     const { detail } = ev;
     const { currentTab } = this.state;
@@ -155,6 +178,28 @@ class Index extends Component {
     this.setState({
       topics: this.state.topics,
     });
+  }
+
+  /**
+   * 滚动到底布
+   *
+   * @param {*} ev
+   * @memberof Index
+   */
+  handleScrollToLower() {
+    const { currentTab, topics } = this.state;
+    const { status } = topics[currentTab];
+    if (status === 'LOADING' || status === 'FINISHED') {
+      return;
+    }
+
+    this.getTopic(currentTab);
+  }
+
+  handleGotoDetail(topic) {
+    const { id } = topic;
+    const url = `${ROUTER_CONFIG.topicDetail.path}?id=${id}`;
+    gotoPage(url);
   }
 
   /**
@@ -200,12 +245,26 @@ class Index extends Component {
           key={idx}
           scrollTop={0}
           onScroll={this.handleScroll}
+          onScrollToLower={this.handleScrollToLower}
         >
-          {
-            list.map((topic, index) => {
-              return <TopicItem key={index} topic={topic} />
-            })
-          }
+          <View>
+            {
+              list.map((topic, index) => {
+                return <TopicItem
+                  key={index}
+                  topic={topic}
+                  onClick={() => {
+                    this.handleGotoDetail(topic);
+                  }}
+                />
+              })
+            }
+            {
+              status === 'FINISHED'
+                ? <View className='list-status'>没有更多了</View>
+                : null
+            }
+          </View>
         </ScrollView> : null
       );
     });

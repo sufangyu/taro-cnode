@@ -3,6 +3,10 @@ export default {
     path: '/pages/home/index',
     isSwitch: true,
   },
+  topicDetail: {
+    path: '/pages/topic/detail/index',
+    isSwitch: false,
+  },
   login: {
     path: '/pages/account/login/index',
     isSwitch: false,

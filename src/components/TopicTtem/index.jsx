@@ -21,7 +21,10 @@ export default class TopicItem extends Component {
     } = this.props.topic;
 
     return (
-      <View className='topic-item'>
+      <View
+        className='topic-item'
+        onClick={this.props.onClick}
+      >
         <View className='topic-item-extra flex'>
           <View className='topic-image'>
             <Image src={avatar_url} />
