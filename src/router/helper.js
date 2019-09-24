@@ -13,12 +13,19 @@ const ACTIONS = {
  * @export
  * @param {string} [url='']
  * @param {string} [actionKey='push']
+ * @param {boolean} [switchTab=false]
  */
-export function gotoPage(url = '', actionKey = 'push') {
+export function gotoPage(url = '', actionKey = 'push', switchTab = false) {
   const key = ACTIONS[actionKey];
-  Taro[key]({
-    url,
-  });
+  if (switchTab) {
+    Taro.switchTab({
+      url,
+    });
+  } else {
+    Taro[key]({
+      url,
+    });
+  }
 }
 
 
@@ -27,8 +34,9 @@ export function gotoPage(url = '', actionKey = 'push') {
  *
  * @export
  * @param {string} [actionKey='push']
+ * @param {boolean} [switchTab=false]
  */
-export function gotoLoginPage(actionKey = 'push') {
+export function gotoLoginPage(actionKey = 'push', switchTab = false) {
   const { route, options } = getCurrentPage();
   let fullpath = `/${route}`;
   const queries = [];
@@ -44,7 +52,7 @@ export function gotoLoginPage(actionKey = 'push') {
 
   const fromUrl = encodeURIComponent(fullpath);
   const url = `${ROUTER_CONFIG.login.path}?from=${fromUrl}`;
-  gotoPage(url, actionKey);
+  gotoPage(url, actionKey, switchTab);
 }
 
 

@@ -9,7 +9,7 @@ import { gotoLoginPage } from '../router/helper'
  * @export
  */
 // eslint-disable-next-line import/prefer-default-export
-export function checkLoginedMiddle() {
+export function checkLoginedMiddle(switchTab = false) {
   return new Promise((resolve, reject) => {
     Taro
       .getStorage({ key: ACCOUNT_KEY })
@@ -20,7 +20,7 @@ export function checkLoginedMiddle() {
         } else {
           reject();
         }
-      }).catch((error) => {
+      }).catch(() => {
         Taro
           .showToast({
             title: '请先登录',
@@ -28,7 +28,7 @@ export function checkLoginedMiddle() {
           })
           .then(() => {
             const action = 'replace';
-            gotoLoginPage(action);
+            gotoLoginPage(action, switchTab);
           });
       });
   });

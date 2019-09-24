@@ -1,0 +1,54 @@
+.tab-handler {
+  height: 82px;
+  line-height: 82px;
+  background: #5677fc;
+  color: #fff;
+  display: flex;
+
+  .tab-item {
+    flex: 1;
+    text-align: center;
+    opacity: 0.5;
+
+    &-actived {
+      opacity: 1;
+    }
+  }
+}
+
+.tab-panel {
+  height: calc(100vh - 82px);
+}
+
+.messages {
+  height: 100%;
+  position: relative;
+
+  .timeline {
+    padding: 30px;
+  }
+}
+
+.empty-data {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  View {
+    width: 100%;
+
+    Image {
+      display: block;
+      margin: 0 auto;
+      width: 126px;
+      height: 126px;
+      margin-bottom: 30px;
+    }
+    View {
+      text-align: center;
+      opacity: 0.5;
+    }
+  }
+}
