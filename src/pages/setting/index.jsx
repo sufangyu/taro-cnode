@@ -1,17 +1,14 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-
-import Panel from '../../components/Panel';
-import List from '../../components/Menu/list';
-import ListItem from '../../components/Menu/item';
-import ROUTER_CONFIG from '../../router/path';
-
+import Panel from '@/components/Panel';
+import List from '@/components/Menu/list';
+import ListItem from '@/components/Menu/item';
+import ROUTER_CONFIG from '@/router/path';
+import iconAboutCnode from '@/assets/images/icon-about-cnode.png';
+import iconClear from '@/assets/images/icon-clear.png';
+import iconVersion from '@/assets/images/icon-version.png';
 import './index.scss'
-import iconAboutCnode from '../../assets/images/icon-about-cnode.png';
-import iconClear from '../../assets/images/icon-clear.png';
-import iconVersion from '../../assets/images/icon-version.png';
-
 
 @inject('accountStore')
 @observer

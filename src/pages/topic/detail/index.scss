@@ -1,6 +1,11 @@
+.page-topic-detail {
+  padding-bottom: 64px;
+}
+
 .topic-detail {
   background-color: #fff;
   margin-bottom: 30px;
+
 
   .topic-title {
     font-size: 36px;
@@ -82,7 +87,7 @@
 
   .tools-action-comment {
     flex: 1;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.08);
     height: 64px;
     line-height: 64px;
     border-radius: 64px;

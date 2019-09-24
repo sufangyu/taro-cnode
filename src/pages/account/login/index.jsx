@@ -10,12 +10,11 @@ import {
   CheckboxGroup,
 } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-
+import avatarDefault from '@/assets/images/avatar-default.png'
+import { loginByAccesstoken } from '@/api/account';
+import ROUTER_CONFIG from '@/router/path';
+import { gotoPage } from '@/router/helper';
 import './index.scss'
-import avatarDefault from '../../../assets/images/avatar-default.png'
-import { loginByAccesstoken } from '../../../api/account';
-import ROUTER_CONFIG from '../../../router/path';
-import { gotoPage } from '../../../router/helper';
 
 
 @inject('accountStore')

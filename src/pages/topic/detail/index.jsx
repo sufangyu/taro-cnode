@@ -2,13 +2,12 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text, Image, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-
+import CommentItem from '@/components/CommentItem'
+import { parseTime } from '@/utils'
+import { getTopicDetail, collectTopic } from '@/api/topics'
+import { checkLoginedMiddle } from '@/commons/helper';
 import WxParse from '../../../components/wxParse/wxParse'
 import '../../../components/wxParse/wxParse.wxss'
-import CommentItem from '../../../components/CommentItem'
-import { parseTime } from '../../../utils'
-import { getTopicDetail, collectTopic } from '../../../api/topics'
-import { checkLoginedMiddle } from '../../../commons/helper';
 import './index.scss'
 
 

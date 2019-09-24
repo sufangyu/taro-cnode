@@ -1,13 +1,11 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text, Image } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-
+import Panel from '@/components/Panel'
+import { getAccount } from '@/api/account'
+import { parseTime } from '@/utils'
+import { checkLoginedMiddle } from '@/commons/helper'
 import './index.scss'
-import Panel from '../../components/Panel'
-
-import { getAccount } from '../../api/account'
-import { parseTime } from '../../utils'
-import { checkLoginedMiddle } from '../../commons/helper'
 
 
 @inject('accountStore')

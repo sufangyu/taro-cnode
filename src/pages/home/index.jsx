@@ -1,13 +1,11 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text, ScrollView } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-
-import TopicItem from '../../components/TopicTtem'
-import ROUTER_CONFIG from '../../router/path'
-import { gotoPage } from '../../router/helper'
-import { TOPIC_CONFIG } from '../../data'
-import { getTopics } from '../../api/topics'
-
+import TopicItem from '@/components/TopicTtem'
+import ROUTER_CONFIG from '@/router/path'
+import { gotoPage } from '@/router/helper'
+import { TOPIC_CONFIG } from '@/data'
+import { getTopics } from '@/api/topics'
 import './index.scss'
 
 class Index extends Component {

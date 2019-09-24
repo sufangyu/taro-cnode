@@ -1,23 +1,22 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-
-import Panel from '../../components/Panel';
-import List from '../../components/Menu/list';
-import ListItem from '../../components/Menu/item';
-import ROUTER_CONFIG from '../../router/path';
-import { gotoLoginPage } from '../../router/helper';
-
+import Panel from '@/components/Panel';
+import List from '@/components/Menu/list';
+import ListItem from '@/components/Menu/item';
+import ROUTER_CONFIG from '@/router/path';
+import { gotoLoginPage } from '@/router/helper';
+import avatarDefault from '@/assets/images/avatar-default.png';
+import iconWrite from '@/assets/images/icon-write.png';
+import iconComment from '@/assets/images/icon-comment.png';
+import iconPublished from '@/assets/images/icon-published.png';
+import iconFavorite from '@/assets/images/icon-favorite.png';
+import iconUser from '@/assets/images/icon-user.png';
+import iconFeedback from '@/assets/images/icon-feedback.png';
+import iconSetting from '@/assets/images/icon-setting.png';
+import iconAbout from '@/assets/images/icon-about.png';
 import './index.scss';
-import avatarDefault from '../../assets/images/avatar-default.png';
-import iconWrite from '../../assets/images/icon-write.png';
-import iconComment from '../../assets/images/icon-comment.png';
-import iconPublished from '../../assets/images/icon-published.png';
-import iconFavorite from '../../assets/images/icon-favorite.png';
-import iconUser from '../../assets/images/icon-user.png';
-import iconFeedback from '../../assets/images/icon-feedback.png';
-import iconSetting from '../../assets/images/icon-setting.png';
-import iconAbout from '../../assets/images/icon-about.png';
+
 
 const menusMainConfig = [
   {

@@ -1,3 +1,5 @@
+const path = require('path')
+
 const config = {
   projectName: 'cnode',
   date: '2019-9-16',
@@ -23,6 +25,9 @@ const config = {
         'transform-object-rest-spread'
       ]
     }
+  },
+  alias: {
+    '@': path.resolve(__dirname, '..', 'src'),
   },
   defineConstants: {
   },

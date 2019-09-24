@@ -1,12 +1,11 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, ScrollView, Image, Button, Text } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-
-import MessageItem from '../../../components/MessageItem';
-import { getMessages } from '../../../api/message'
-import ROUTER_CONFIG from '../../../router/path'
-import { gotoPage } from '../../../router/helper'
-import { checkLoginedMiddle } from '../../../commons/helper';
+import MessageItem from '@/components/MessageItem';
+import { getMessages } from '@/api/message'
+import ROUTER_CONFIG from '@/router/path'
+import { gotoPage } from '@/router/helper'
+import { checkLoginedMiddle } from '@/commons/helper';
 import './index.scss'
 
 @inject('accountStore')
