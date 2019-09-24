@@ -29,8 +29,21 @@ export function gotoPage(url = '', actionKey = 'push') {
  * @param {string} [actionKey='push']
  */
 export function gotoLoginPage(actionKey = 'push') {
-  const { route } = getCurrentPage();
-  const url = `${ROUTER_CONFIG.login.path}?from=/${route}`;
+  const { route, options } = getCurrentPage();
+  let fullpath = `/${route}`;
+  const queries = [];
+
+  Object.keys(options).forEach((key) => {
+   const val = options[key];
+    queries.push(`${key}=${val}`);
+  });
+
+  if (queries.length !== 0) {
+    fullpath += `?${queries.join('&')}`
+  }
+
+  const fromUrl = encodeURIComponent(fullpath);
+  const url = `${ROUTER_CONFIG.login.path}?from=${fromUrl}`;
   gotoPage(url, actionKey);
 }
 

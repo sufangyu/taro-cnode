@@ -108,7 +108,7 @@ class Index extends Component {
 
         // 重定向来源页面
         setTimeout(() => {
-          const redirectUrl = params.from || ROUTER_CONFIG.home;
+          const redirectUrl = params.from ? decodeURIComponent(params.from) : ROUTER_CONFIG.home;
           const action = 'replace';
           gotoPage(redirectUrl, action);
         }, 1000);
