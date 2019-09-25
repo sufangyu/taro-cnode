@@ -1,22 +1,22 @@
 export default {
   home: {
     path: '/pages/home/index',
-    isSwitch: true,
+    switchTab: true,
   },
   topicDetail: {
     path: '/pages/topic/detail/index',
-    isSwitch: false,
+    switchTab: false,
   },
   login: {
     path: '/pages/account/login/index',
-    isSwitch: false,
+    switchTab: false,
   },
   about: {
     path: '/pages/about/index',
-    isSwitch: false,
+    switchTab: false,
   },
   setting: {
     path: '/pages/setting/index',
-    isSwitch: false,
+    switchTab: false,
   },
 };

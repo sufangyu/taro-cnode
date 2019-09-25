@@ -4,7 +4,7 @@
 	"description": "",
 	"appid": "wx71816a8ee509f483",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": false,
 		"postcss": true,
 		"minified": true,
@@ -67,6 +67,12 @@
 					"name": "信息",
 					"pathName": "pages/messages/list/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人资料",
+					"pathName": "pages/profile/index",
 					"scene": null
 				}
 			]

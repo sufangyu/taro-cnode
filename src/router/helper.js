@@ -1,6 +1,14 @@
-import Taro from '@tarojs/taro'
+import Taro from '@tarojs/taro';
 import ROUTER_CONFIG from './path';
 
+// tabbar 的路径
+const TABBAR_PATH = [
+  '/pages/home/index',
+  '/pages/messages/list/index',
+  '/pages/mine/index',
+];
+
+// 跳转的方式
 const ACTIONS = {
   push: 'navigateTo',
   replace: 'redirectTo',
@@ -13,15 +21,16 @@ const ACTIONS = {
  * @export
  * @param {string} [url='']
  * @param {string} [actionKey='push']
- * @param {boolean} [switchTab=false]
  */
-export function gotoPage(url = '', actionKey = 'push', switchTab = false) {
-  const key = ACTIONS[actionKey];
-  if (switchTab) {
+export function gotoPage(url = '', actionKey = 'push') {
+  const isSwitchTab = TABBAR_PATH.includes(url);
+
+  if (isSwitchTab) {
     Taro.switchTab({
       url,
     });
   } else {
+    const key = ACTIONS[actionKey];
     Taro[key]({
       url,
     });
@@ -34,10 +43,9 @@ export function gotoPage(url = '', actionKey = 'push', switchTab = false) {
  *
  * @export
  * @param {string} [actionKey='push']
- * @param {boolean} [switchTab=false]
  */
-export function gotoLoginPage(actionKey = 'push', switchTab = false) {
-  const { route, options } = getCurrentPage();
+export function gotoLoginPage(actionKey = 'push') {
+  const { route, options = {} } = getCurrentPage();
   let fullpath = `/${route}`;
   const queries = [];
 
@@ -52,7 +60,7 @@ export function gotoLoginPage(actionKey = 'push', switchTab = false) {
 
   const fromUrl = encodeURIComponent(fullpath);
   const url = `${ROUTER_CONFIG.login.path}?from=${fromUrl}`;
-  gotoPage(url, actionKey, switchTab);
+  gotoPage(url, actionKey);
 }
 
 

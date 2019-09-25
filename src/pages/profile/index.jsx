@@ -1,15 +1,12 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text, Image } from '@tarojs/components'
-import { observer, inject } from '@tarojs/mobx'
 import Panel from '@/components/Panel'
+import withLogin from '@/hoc/withLogin'
 import { getAccount } from '@/api/account'
 import { parseTime } from '@/utils'
-import { checkLoginedMiddle } from '@/commons/helper'
 import './index.scss'
 
-
-@inject('accountStore')
-@observer
+@withLogin()
 class Index extends Component {
 
   config = {
@@ -25,10 +22,7 @@ class Index extends Component {
   }
 
   componentWillMount () {
-    // 检查是否已经登录
-    checkLoginedMiddle().then(() => {
-      this.getAccount();
-    })
+    this.getAccount();
   }
 
   componentDidMount () {
@@ -51,7 +45,6 @@ class Index extends Component {
     const { accountStore: { account } } = this.props;
     console.log('获取 用户详情', account);
     const res = await getAccount(account.loginName);
-    console.log('res');
 
     if (res.success) {
       const {

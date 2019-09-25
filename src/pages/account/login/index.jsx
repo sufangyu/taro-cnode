@@ -69,9 +69,6 @@ class Index extends Component {
   async handleSubmit() {
     const { accesstoken, isAutoLogin, params } = this.state;
 
-    console.log('accesstoken =>>', accesstoken);
-
-
     if (!accesstoken) {
       Taro.showToast({
         title: '登录密钥不能为空',
@@ -87,7 +84,6 @@ class Index extends Component {
       };
 
       const res = await loginByAccesstoken(data);
-      console.log(res);
       if (res.success) {
         Taro.showToast({
           title: '登录成功',
@@ -108,9 +104,8 @@ class Index extends Component {
         // 重定向来源页面
         setTimeout(() => {
           const redirectUrl = params.from ? decodeURIComponent(params.from) : ROUTER_CONFIG.home;
-          const switchTab = !!params.from;
           const action = 'replace';
-          gotoPage(redirectUrl, action, switchTab);
+          gotoPage(redirectUrl, action);
         }, 1000);
       }
     } catch (error) {

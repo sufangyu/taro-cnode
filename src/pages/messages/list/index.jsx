@@ -5,11 +5,10 @@ import MessageItem from '@/components/MessageItem';
 import { getMessages } from '@/api/message'
 import ROUTER_CONFIG from '@/router/path'
 import { gotoPage } from '@/router/helper'
-import { checkLoginedMiddle } from '@/commons/helper';
+import withLogin from '@/hoc/withLogin'
 import './index.scss'
 
-@inject('accountStore')
-@observer
+@withLogin()
 export default class MessageList extends Component {
   config = {
     navigationBarTitleText: ''
@@ -35,10 +34,8 @@ export default class MessageList extends Component {
     };
   }
 
-  componentWillMount() {
-    checkLoginedMiddle().then(() => {
-      this.getMessages();
-    })
+  componentDidShow() {
+    this.getMessages();
   }
 
   async getMessages() {
