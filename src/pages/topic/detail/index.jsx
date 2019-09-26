@@ -5,7 +5,7 @@ import { observer, inject } from '@tarojs/mobx'
 import CommentItem from '@/components/CommentItem'
 import { parseTime } from '@/utils'
 import { getTopicDetail, collectTopic } from '@/api/topics'
-import { checkLoginedMiddle } from '@/commons/helper';
+import { checkLoginedMiddle } from '@/middleware/account.js';
 import WxParse from '../../../components/wxParse/wxParse'
 import '../../../components/wxParse/wxParse.wxss'
 import './index.scss'

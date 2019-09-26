@@ -26,6 +26,7 @@ export default class ListItem  extends Component {
       brief,
       path,
       disabled,
+      callback,
     } = menu;
 
     return (
@@ -38,7 +39,11 @@ export default class ListItem  extends Component {
           ]
         }
         onClick={() => {
-          this.handleNavigateTo(menu);
+          if (path) {
+            this.handleNavigateTo(menu);
+          } else {
+            callback();
+          }
         }}
       >
         {
