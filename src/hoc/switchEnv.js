@@ -127,6 +127,12 @@ function switchEnv() {
        * @memberof Index
        */
       $_handlwSwitchApiEnvClose() {
+        Taro.showModal({
+          title: '提示',
+          content: `关闭成功, 请删除小程序重进`,
+          showCancel: false,
+        });
+
         this.setState({
           debugMenusConfig: [],
         });
