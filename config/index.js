@@ -95,7 +95,8 @@ const config = {
           }
         }
       }
-    }
+    },
+    esnextModules: ['taro_rich_text']
   }
 }
 

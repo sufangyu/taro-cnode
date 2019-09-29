@@ -6,6 +6,16 @@ import { fromNow } from '../../utils'
 import './index.scss'
 
 export default class MessageItem extends Component {
+  static defaultProps = {
+    message: {
+      author: {},
+      title: '',
+      reply: {
+        create_at: '',
+      },
+    },
+  }
+
   render() {
     const {
       message: {author, title, topic, reply},

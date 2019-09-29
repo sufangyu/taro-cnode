@@ -2,12 +2,11 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Button, Text, Image, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
+import { TaroRichTextNoWxParse } from 'taro_rich_text'
 import CommentItem from '@/components/CommentItem'
 import { parseTime } from '@/utils'
 import { getTopicDetail, collectTopic } from '@/api/topics'
-import { checkLoginedMiddle } from '@/middleware/account.js';
-import WxParse from '../../../components/wxParse/wxParse'
-import '../../../components/wxParse/wxParse.wxss'
+import { checkLoginedMiddle } from '@/middleware/account.js'
 import './index.scss'
 
 
@@ -16,7 +15,8 @@ import './index.scss'
 export default class TopicDetail extends Component {
 
   config = {
-    navigationBarTitleText: '详情'
+    navigationBarTitleText: '详情',
+    usingComponents: {}
   }
 
   constructor() {
@@ -56,7 +56,7 @@ export default class TopicDetail extends Component {
     try {
       const { id } = this.state.params;
       const data = {
-        mdrender: true,
+        mdrender: false,
       };
       const res = await getTopicDetail(id, data);
       console.log(res);
@@ -144,9 +144,6 @@ export default class TopicDetail extends Component {
       replies,
     } = this.state.topic;
 
-    WxParse.wxParse('content', 'html', content, this.$scope, 5);
-
-
     return (
       <View className='page page-topic-detail'>
         {/* 详情内容 */}
@@ -168,8 +165,11 @@ export default class TopicDetail extends Component {
             </View>
           </View>
           <View className='topic-content'>
-            <import src='../../../components/wxParse/wxParse.wxml' />
-            <template is='wxParse' data='{{wxParseData:content.nodes}}' />
+            <TaroRichTextNoWxParse
+              raw={false}
+              type='markdown'
+              richText={content}
+            />
           </View>
         </View>
 

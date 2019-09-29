@@ -2,15 +2,19 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 
-import WxParse from '../wxParse/wxParse'
+import { TaroRichTextNoWxParse } from 'taro_rich_text'
 import { fromNow } from '../../utils'
 import './index.scss'
 
 export default class CommentItem extends Component {
+  static defaultProps = {
+    comment: {
+      create_at: '',
+    },
+  }
+
   render() {
     const { comment } = this.props;
-
-    WxParse.wxParse('content', 'html', comment.content, this.$scope, 5);
 
     return (
       <View className='comment-item'>
@@ -35,8 +39,11 @@ export default class CommentItem extends Component {
           </View>
 
           <View className='comment-content'>
-            <import src='../wxParse/wxParse.wxml' />
-            <template is='wxParse' data='{{wxParseData:content.nodes}}' />
+            <TaroRichTextNoWxParse
+              raw={false}
+              type='markdown'
+              richText={comment.content}
+            />
           </View>
         </View>
       </View>
